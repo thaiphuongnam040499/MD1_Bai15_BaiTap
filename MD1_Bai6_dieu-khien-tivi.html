@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Television {
+        status;
+        channel;
+        volume;
+
+        constructor(status, channel, volume) {
+            this.status = status;
+            this.channel = channel;
+            this.volume = volume;
+        }
+
+        getStatus() {
+            return this.status;
+        }
+
+        setStatus(status) {
+            this.status = status;
+        }
+
+        getChannel() {
+            return this.channel;
+        }
+
+        setChannel(channel) {
+            this.channel = channel;
+        }
+
+        getVolume() {
+            return this.volume;
+        }
+
+        setVolume(volume) {
+            this.volume = volume;
+        }
+    }
+    class Remote {
+        onOff(television){
+            console.log('check',!television.getStatus())
+            television.setStatus(!television.getStatus())
+        }
+        changeChannel(television,channel){
+            if(television.getStatus()){
+                television.setChannel(channel)
+            } else {
+                console.log('Tivi đang tắt! Vui lòng bật nó lên đã')
+            }
+        }
+        upVolume(television){
+            if(television.getStatus()){
+                if(television.getVolume()<3){
+
+                    television.setVolume(television.getVolume()+1)
+                } else {
+                    console.log('Tiếng to nhất của tao chỉ là 3 thôi')
+                }
+
+            } else {
+                console.log('Tivi đang tắt! Vui lòng bật')
+            }
+        }
+        downVolume(television){
+            if(television.getStatus()){
+                if(television.getVolume()>0){
+                    television.setVolume(television.getVolume()-1)
+                } else {
+                    console.log('Volume của tao nhỏ nhất chỉ là 0 thôi nhé!')
+                }
+
+            } else {
+                console.log('Tivi đang tắt! Vui lòng bật')
+            }
+        }
+    }
+    television = new Television(false,null,0)
+    remote = new Remote();
+</script>
+</body>
+</html>
